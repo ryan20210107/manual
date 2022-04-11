@@ -1,0 +1,125 @@
+
+常用置頂
+https://gitbook.tw/chapters/using-git/add-to-git.html
+
+看狀態
+git status
+
+看commit
+git commit
+
+把檔案加入 staging
+git add aaa_file
+
+把全部檔案加入 staging
+git add --all
+
+commit 到local端的 repository
+git commit -m "input your message"
+
+push 到remote端
+git push
+
+砍檔案
+https://gitbook.tw/chapters/using-git/rename-and-delete-file.html
+git rm aaa_file
+
+
+4.
+設定git
+git config --global user.email "ryan_chiang@castech.com.tw"
+git config --global user.name "ryan"
+git config --global core.editor vim
+
+
+3.
+想要取消commit
+
+第1招 
+git revert SHA value
+然後 git push
+這個方法在server端會多一條revert的commit
+
+第2招
+git rebase -i HEAD~5 (~5 如果git log的次數小於5就會出錯)
+git push -f ()
+這個方法真的會刪掉server裡面的commit
+所以push需要-f ，但是在git lab不給用-f ，所以最後還是用revert
+
+
+
+
+2.
+https://gitbook.tw/chapters/branch/using-branch.html
+
+看branch
+git branch -a
+
+新增branch
+git branch aaa_branch
+
+新增之後push
+git push --set-upstream origin aaa_branch
+
+
+切換分支
+checkout aaa_branch
+
+改分支名字
+git branch -m aaa_branch bbb_branch
+
+改名字之後 push
+git push origin HEAD
+
+刪除branch
+git branch -f aaa_branch 
+
+建立新的branch 叫temp，並且checkout過去
+git checkout -b temp 
+
+把temp這個branch 的內容 push倒master branch
+通常用於先建立master的分支叫temp，在temp改好之後要push回master
+git push origin temp:mater
+
+
+
+1.
+
+https://gitbook.tw/chapters/tag/using-tag.html
+(標籤的內容不能重複)
+https://blog.wu-boy.com/2010/11/git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%A8%99%E7%B1%A4tag/
+
+
+
+列出所有標籤
+git tag -l 
+篩選標籤
+git tag -l 'v1.4.2.*'
+
+貼標籤
+git tag big_cats 51d54ff
+
+有附註的標籤 
+git tag big_cats 51d54ff -a -m "Big Cats are comming"
+看標籤的附註
+git show big_cats 
+
+
+刪除標籤
+git tag -d big_cats
+
+刪除remote端標籤
+git push origin :refs/tags/my_tag
+
+把標籤上傳到remote端 (在GitLab要用graph模式才看的到標籤)
+git push --tags
+
+
+
+
+
+
+
+
+
+
